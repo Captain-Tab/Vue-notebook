@@ -15,3 +15,7 @@ export default class Test extends Vue {
   private greeting = "hello"
 }
 </script>
+
+<style scoped lang="less">
+
+</style>
