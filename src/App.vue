@@ -21,37 +21,12 @@ export default class App extends Vue {
 
 <style scoped lang="less">
 @import './assets/css/iconfont.css';
+@import './assets/css/reset.css';
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body, #app {
+#app {
+  display: flex;
+  align-items: stretch;
   height: 100%;
-}
-
-body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  --moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #eee;
-}
-
-
-a {
-  text-decoration: none;
-  color: #444;
-}
-
-ul, li {
-  list-style: none;
 }
 
 .btn {
@@ -66,8 +41,4 @@ ul, li {
 }
 
 
-#app {
-  display: flex;
-  align-items: stretch;
-}
 </style>
