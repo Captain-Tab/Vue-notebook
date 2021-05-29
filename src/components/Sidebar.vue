@@ -1,5 +1,6 @@
 <template>
   <div id="sidebar">
+    <avatar/>
     <div class="icons">
       <router-link to="/note/1" title="笔记"><i class="iconfont icon-note"></i></router-link>
       <router-link to="/notebooks" title="笔记本"><i class="iconfont icon-notebook"></i></router-link>
@@ -12,9 +13,12 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import Avatar from "@/components/Avatar.vue";
 
 @Component({
-  components: {},
+  components: {
+    Avatar
+  },
 })
 export default class Login extends Vue {
   name = "Login"
