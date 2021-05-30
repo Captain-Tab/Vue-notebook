@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-axios.defaults.baseURL = 'http://note-server.hunger-valley.com'
+axios.defaults.baseURL = 'https://note-server.hunger-valley.com'
+axios.defaults.withCredentials = true
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default function request (url, type = 'GET', data = {}) {
