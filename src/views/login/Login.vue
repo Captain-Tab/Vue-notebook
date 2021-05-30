@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import request from "@/helpers/request";
+import Auth from  '@/api/Auth.js'
 
 @Component({
   components: {},
@@ -41,12 +41,11 @@ export default class Login extends Vue {
   private isShowLogin = false // login status
   private isShowRegister = false // register status
 
-  private created () {
-    request('/auth/login', 'POST', {username: 'hunger', password: '123456'}).then((data)=> {
+  private  created () {
+    Auth.getUserInfo().then((data)=> {
       console.log('data', data)
     })
   }
-
   // login information
   private login = {
     username: '',
@@ -75,7 +74,7 @@ export default class Login extends Vue {
     this.isShowRegister = true
   }
 
-  // validator the login information
+  // validator the register information
   private onRegister () {
     if(!/^[\w\u4e00-\u9fa5]{3,15}$/.test(this.register.username)){
       this.register.isError = true
@@ -89,10 +88,15 @@ export default class Login extends Vue {
     }
     this.register.isError = false
     this.register.notice = ''
-    console.log(`start register..., username: ${this.register.username} , password: ${this.register.password}`)
+    Auth.register({
+      username: this.register.username,
+      password: this.register.password
+    }).then((data)=> {
+      console.log('data', data)
+    })
   }
 
-  // validator the register information
+  // validator the login information
   private onLogin () {
     if(!/^[\w\u4e00-\u9fa5]{3,15}$/.test(this.login.username)){
       this.login.isError = true
@@ -106,7 +110,12 @@ export default class Login extends Vue {
     }
     this.login.isError = false
     this.login.notice = ''
-    console.log(`start login..., username: ${this.login.username} , password: ${this.login.password}`)
+    Auth.login({
+      username: this.login.username,
+      password: this.login.password
+    }).then((data)=> {
+      console.log('data', data)
+    })
   }
 
 }

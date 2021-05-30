@@ -6,7 +6,7 @@
       <router-link to="/notebooks" title="笔记本"><i class="iconfont icon-notebook"></i></router-link>
     <router-link to="/trash/2" title="回收站"><i class="iconfont icon-trash"></i></router-link>
     </div>
-  <div class="logout" @click="logout">
+  <div class="logout" @click="logOut">
    <i class="iconfont icon-logout"></i>
   </div></div>
 </template>
@@ -14,6 +14,7 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import Avatar from "@/components/Avatar.vue";
+import Auth from "@/api/Auth.js"
 
 @Component({
   components: {
@@ -23,9 +24,11 @@ import Avatar from "@/components/Avatar.vue";
 export default class Login extends Vue {
   name = "Login"
 
-  /** logout */
-  private logout () {
-    console.log('log out event')
+  // log out
+  private logOut () {
+    Auth.logout().then((data)=> {
+        console.log('log out successful', data)
+      })
   }
 }
 </script>
