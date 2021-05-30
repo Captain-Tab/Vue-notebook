@@ -30,6 +30,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
+import request from "@/helpers/request";
 
 @Component({
   components: {},
@@ -39,6 +40,12 @@ export default class Login extends Vue {
 
   private isShowLogin = false // login status
   private isShowRegister = false // register status
+
+  private created () {
+    request('/auth/login', 'POST', {username: 'hunger', password: '123456'}).then((data)=> {
+      console.log('data', data)
+    })
+  }
 
   // login information
   private login = {
